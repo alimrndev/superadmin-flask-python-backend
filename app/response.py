@@ -1,0 +1,20 @@
+from flask import jsonify, make_response
+
+
+def success(values, message):
+    res = {
+        'data': values,
+        'message': message,
+        'status' : 200
+    }
+
+    return make_response(jsonify(res)), 200
+
+def badRequest(values, message):
+    res = {
+        'data': values,
+        'message': message,
+        'status' : 400
+    }
+
+    return make_response(jsonify(res)), 400
