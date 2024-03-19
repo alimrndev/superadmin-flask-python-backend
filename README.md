@@ -14,6 +14,10 @@ Backend use Python Language and Framework Flask
 - pip3 install flask-migrate
 <!-- Install pymysql -->
 - pip3 install pymysql
+<!-- Install werkzeug password hash -->
+- pip3 install werkzeug
+<!-- Install Flask JWT -->
+- pip3 install flask-jwt-extended
 
 # Command
 <!-- Create Virtual Env  -->
@@ -24,6 +28,8 @@ Backend use Python Language and Framework Flask
 - deactivate
 <!-- Flask Run -->
 - flask run
+<!-- Flask Run Debug Mode On -->
+- flask run --debug
 <!-- Init pymysql -->
 - flask db init
 <!-- Migrate pymysql -->
