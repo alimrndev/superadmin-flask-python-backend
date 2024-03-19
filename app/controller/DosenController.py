@@ -1,8 +1,10 @@
 from app.model.dosen import Dosen
 from app.model.mahasiswa import Mahasiswa
 
-from app import response, db
-from flask import request
+from app import response, db, app
+from flask import request, jsonify
+
+import math
 
 def read():
     try:
@@ -150,6 +152,70 @@ def delete(id):
         db.session.commit()
 
         return response.success("", f"Berhasil Hapus Data!")
+    except Exception as e:
+        print(e)
+        return response.internalServerError()
+
+def get_pagination(clss, url, start, limit):
+    # ambil data select
+    results = clss.query.all()
+    # ubah format
+    data = formatArray(results)
+    # hitung jumlah data
+    count = len(data)
+
+    obj = {}
+
+    if count < start:
+        obj['success'] = False
+        obj['message'] = "Page yang dipilih melewati batas total data!"
+        return obj
+    else:
+        obj['success'] = True
+        obj['start_page'] = start
+        obj['per_page'] = limit
+        obj['total_data'] = count
+        obj['total_page'] = math.ceil(count/limit)
+
+        #previouss link
+        if start == 1:
+            obj['previous'] = ''
+        else:
+            start_copy = max(1, start-limit)
+            limit_copy = start - 1
+            obj['previous'] = f"{url}?start={start_copy}&limit={limit_copy}"
+
+        #next link
+        if start + limit > count:
+            obj['next'] = ''
+        else:
+            start_copy = start + limit
+            obj['next'] = f"{url}?start={start_copy}&limit={limit}"
+
+        obj['results'] = data[(start - 1): (start - 1 + limit)]
+        return obj
+    
+def paginate():
+    start = request.args.get('start')
+    limit = request.args.get('limit')
+    baseUrl = app.config['BASE_URL']
+
+    try:
+        if start == None or limit == None:
+            return jsonify(get_pagination(
+                Dosen,
+                f'{baseUrl}/api/dosen/page',
+                start = request.args.get('start', 1),
+                limit = request.args.get('limit', 3),
+            ))
+        else:
+            return jsonify(get_pagination(
+                Dosen,
+                f'{baseUrl}/api/dosen/page',
+                start = int(start),
+                limit = int(limit),
+            ))
+
     except Exception as e:
         print(e)
         return response.internalServerError()
