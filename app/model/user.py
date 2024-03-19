@@ -11,8 +11,8 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
 
-    def __repr__(self):
-        return '<User {}>'.format(self.name)
+    def __repr__ (self):
+        return f"<User {self.name}>"
     
     def setPassword(self, password):
         self.password = generate_password_hash(password)
