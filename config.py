@@ -8,6 +8,7 @@ class Config(object):
     USERNAME = str(os.environ.get("DB_USERNAME"))
     PASSWORD = str(os.environ.get("DB_PASSWORD"))
 
+    BASE_URL = str(os.environ.get("BASE_URL"))
     JWT_SECRET_KEY = str(os.environ.get("JWT_SECRET"))
     JWT_BLACKLIST_ENABLED = True
 

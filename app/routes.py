@@ -44,3 +44,7 @@ def mahasiswas():
 @app.route('/file-upload', methods=['POST'])
 def uploads():
     return UploadController.upload()
+
+@app.route('/api/dosen/page', methods=['GET'])
+def pagination():
+    return DosenController.paginate()
