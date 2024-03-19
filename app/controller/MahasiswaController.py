@@ -1,7 +1,6 @@
 from app.model.mahasiswa import Mahasiswa
 
-from app import response, app, db
-from flask import request
+from app import response
 
 def index():
     try:

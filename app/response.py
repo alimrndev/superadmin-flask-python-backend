@@ -1,6 +1,5 @@
 from flask import jsonify, make_response
 
-
 def success(values, message):
     res = {
         'data': values,
@@ -18,3 +17,11 @@ def badRequest(values, message):
     }
 
     return make_response(jsonify(res)), 400
+
+def internalServerError():
+    res = {
+        'message': 'Terjadi kesalahan internal server!',
+        'status' : 500
+    }
+
+    return make_response(jsonify(res)), 500
