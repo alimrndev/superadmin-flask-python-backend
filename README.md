@@ -4,30 +4,8 @@ API Backend using Framework Flask Python
 # Installer
 <!-- Install Virtual Env  -->
 - pip3 install virtualenv
-
-<!-- Install Framework Flask  -->
-- pip3 install flask
-<!-- Install werkzeug password hash / utils -->
-- pip3 install werkzeug
-
-<!-- Install python-dotenv  -->
-- pip3 install python-dotenv
-<!-- Install Flask RESTful API -->
-- pip3 install flask-restful
-<!-- Install Flask JWT Auth -->
-- pip3 install flask-jwt-extended
-
-<!-- Install flask-sqlalchemy -->
-- pip3 install flask-sqlalchemy
-<!-- Install flask-migrate -->
-- pip3 install flask-migrate
-<!-- Install pymysql -->
-- pip3 install pymysql
-
-<!-- Install pytest -->
-- pip3 install pytest
-<!-- Install pytest-cov -->
-- pip3 install pytest-cov
+<!-- Install Requerement.txt -->
+- pip3 install -r requirements.txt
 
 # Command
 <!-- Copy Paste .env file  -->
@@ -37,6 +15,8 @@ API Backend using Framework Flask Python
 - virtualenv env
 <!-- Activate Virtual Env on Windows -->
 - . env\Scripts\activate
+or
+- source env/bin/activate
 <!-- Deactivate Virtual Env on Windows -->
 - deactivate
 
