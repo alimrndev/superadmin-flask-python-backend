@@ -1,0 +1,25 @@
+flask #Framework Python
+werkzeug # Utils
+# Optional Dependencies
+python-dotenv  # Environment variables
+flask-restful  # RESTful API development
+flask-jwt-extended  # JWT authentication
+
+# SQL and Migrate:
+# flask-sqlalchemy / sqlalchemy
+# flask-migrate
+flask-sqlalchemy
+flask-migrate
+
+# Database
+# Example: MySQL
+# PyMySQL
+# Example: PostgreSQL
+# psycopg2
+# Example: SQLite
+# sqlite3
+pymysql
+
+# Testing
+pytest
+pytest-cov
